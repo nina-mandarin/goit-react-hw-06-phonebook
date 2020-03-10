@@ -3,7 +3,7 @@ import phonebookReducer from './phonebook.js/phonebookReducer';
 
 const preloadedState = {
   phonebook: {
-    contacts: JSON.parse(localStorage.getItem('contacts'))
+    contacts: JSON.parse(localStorage.getItem('contacts')) || []
   }
 }
 

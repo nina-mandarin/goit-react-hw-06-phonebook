@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
 import phonebookActions from '../../redux/phonebook.js/phonebookActions';
 
 const Filter = ({ contacts, value, onChange }) => {
-  if (contacts.length > 1 || value) {
+  if (contacts.length > 1) {
     return (
       <Label>
         <LabelText>Find contacts by name</LabelText>
@@ -17,15 +16,6 @@ const Filter = ({ contacts, value, onChange }) => {
 
   return null;
 
-}
-
-Filter.propTypes = {
-  filter: PropTypes.string,
-  onChange: PropTypes.func.isRequired
-};
-
-Filter.defaultProps = {
-  filter: ''
 }
 
 const Label = styled.label`
