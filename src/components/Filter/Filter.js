@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'
 
-import phonebookActions from '../../redux/phonebook.js/phonebookActions';
+import phonebookActions from '../../redux/phonebook/phonebookActions';
 
 const Filter = ({ contacts, value, onChange }) => {
   if (contacts.length > 1) {

@@ -9,14 +9,11 @@ const addContact = (state, action) => {
     return state
   }
 
-  localStorage.setItem('contacts', JSON.stringify([...state, action.payload.contact]));
   return [...state, action.payload.contact]
 }
 
 const deleteContact = (state, action) => {
-  const newState = state.filter(({ id }) => id !== action.payload);
-  localStorage.setItem('contacts', JSON.stringify(newState));
-  return newState;
+  return state.filter(({ id }) => id !== action.payload);
 }
 
 const changeFilter = (state, action) => {

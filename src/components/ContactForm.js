@@ -4,13 +4,9 @@ import styled from 'styled-components'
 
 import withTheme from './hoc/withTheme';
 import { LIGHT } from '../constants';
-import phonebookActions from '../redux/phonebook.js/phonebookActions'
+import phonebookActions from '../redux/phonebook/phonebookActions'
 
 class ContactForm extends Component {
-  static propTypes = {
-    onCreateContact: () => { }
-  };
-
   state = {
     name: '',
     number: ''

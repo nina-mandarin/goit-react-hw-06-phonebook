@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'
 
 import ContactListItem from '../ContactListItem';
-import phonebookActions from '../../redux/phonebook.js/phonebookActions';
+import phonebookActions from '../../redux/phonebook/phonebookActions';
 
-const ContactList = ({ contacts, onDeleteItem }) => {
-  if (contacts.length < 1) {
-    return null;
+class ContactList extends Component {
+
+  componentDidUpdate(prevProp, prevState) {
+    const prevContacts = prevProp.contacts;
+    const currentContacts = this.props.contacts;
+
+    if (prevContacts !== currentContacts) {
+      localStorage.setItem('contacts', JSON.stringify(currentContacts));
+    }
+  };
+
+  render() {
+    const { contacts, onDeleteItem } = this.props;
+
+    if (contacts.length < 1) {
+      return null;
+    }
+
+    return (
+      <List>
+        {contacts.map(({ id, name, number }) => {
+          return (
+            <ContactListItem
+              key={id}
+              name={name}
+              number={number}
+              onDelete={() => onDeleteItem(id)}
+            />
+          );
+        })}
+      </List>
+    )
   }
-
-  return (
-    <List>
-      {contacts.map(({ id, name, number }) => {
-        return (
-          <ContactListItem
-            key={id}
-            name={name}
-            number={number}
-            onDelete={() => onDeleteItem(id)}
-          />
-        );
-      })}
-    </List>
-  )
 }
 
 const List = styled.ul`

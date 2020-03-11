@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import phonebookReducer from './phonebook.js/phonebookReducer';
+import phonebookReducer from './phonebook/phonebookReducer';
 
 const preloadedState = {
   phonebook: {
